@@ -4,7 +4,12 @@
     <h2>Users</h2>
     <ul>
         {% for user in object_list %}
-            <li>{{ user.username }}</li>
+            <li><a href="{% url 'user-update' user.pk %}" title="Change password for {{ user.username }}">
+                {{ user.username }} (id = {{ user.id }})
+            </a></li>
         {% endfor %}
     </ul>
+    <div class="border-top pt-3">
+        <a class="btn btn-outline-info" href="{% url 'user-create' %}">Add new user</a>
+    </div>
 {% endblock %}
