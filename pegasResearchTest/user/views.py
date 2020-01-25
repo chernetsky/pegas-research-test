@@ -7,7 +7,10 @@ from django.shortcuts import (
     redirect,
     get_object_or_404
 )
-from django.views.generic import ListView
+from django.views.generic import (
+    ListView,
+    DeleteView
+)
 
 
 from .forms import (UserCreationForm, PasswordChangeForm)
@@ -17,6 +20,13 @@ class UserListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'user/list.html'
     ordering = ['username']
+
+
+class UserDeleteView(LoginRequiredMixin, DeleteView):
+    model = User
+    template_name = 'user/confirm_delete.html'
+    success_url = '/user/'
+
 
 
 @login_required
