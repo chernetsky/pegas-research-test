@@ -38,7 +38,7 @@ def create(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}.')
+            messages.success(request, f"Аккаунт '{username}' успешно создан.")
             return redirect('user-list')
     else:
         form = UserCreationForm()
@@ -57,7 +57,7 @@ def update(request, **kwargs):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Password changed for {user.username} account.')
+            messages.success(request, f"Пароль для аккаунта '{user.username}' изменён.")
             return redirect('user-list')
     else:
         form = PasswordChangeForm(user=user)

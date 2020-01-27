@@ -31,6 +31,10 @@ body {
   #greeting {
     color: #cbd5db;
   }
+  #greeting .user {
+      font-size: 19px;
+      font-style: normal;
+  }
   
   .content-section {
     background: #ffffff;
