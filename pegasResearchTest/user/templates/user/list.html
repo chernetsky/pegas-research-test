@@ -2,13 +2,18 @@
 
 {% block content %}
     <h2>Users</h2>
-    <ul class="pb-10">
+    <ul class="pb-2 list-group">
         {% for user in object_list %}
             {% if not user.is_superuser %}
-                <li><a href="{% url 'user-update' user.pk %}" title="Change password for {{ user.username }}">
-                    {{ user.username }} (id = {{ user.id }})
-                    <small class=text-muted><a href="{% url 'user-delete' user.pk %}">Delete</a></small>
-                </a></li>
+                <li class="list-group-item">
+                    {{ user.username }}
+                    <div class="float-right action-buttons">
+                        <a href="{% url 'user-update' user.pk %}" title="Change password for {{ user.username }}" class="fa fa-edit">
+                            <span class=""></span></a>
+                        <a href="{% url 'user-delete' user.pk %}" title="Delete {{ user.username }} user account" class="fa fa-trash">
+                            <span class=""></span></a>
+                    </div>
+                </li>
             {% endif %}
         {% endfor %}
     </ul>

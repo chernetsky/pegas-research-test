@@ -1,23 +1,10 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import (
-    login_required,
-    permission_required
-)
+from django.contrib.auth.decorators import (login_required, permission_required)
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User
-from django.shortcuts import (
-    render, 
-    redirect,
-    get_object_or_404
-)
-from django.views.generic import (
-    ListView,
-    DeleteView
-)
-from .forms import (
-    UserCreationForm,
-    PasswordChangeForm
-)
+from django.shortcuts import (render, redirect, get_object_or_404)
+from django.views.generic import (ListView, DeleteView)
+from .forms import (UserCreationForm, PasswordChangeForm)
 
 
 #
@@ -27,6 +14,14 @@ class UserListView(PermissionRequiredMixin, ListView):
     model = User
     template_name = 'user/list.html'
     ordering = ['username']
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+
+        # Set up 'activate' field for main menu item activation
+        context['activate'] = 'user'
+        return context
 
     # PermissionRequiredMixin settings
     permission_required = 'auth.add_user'
@@ -47,7 +42,7 @@ def create(request):
             return redirect('user-list')
     else:
         form = UserCreationForm()
-    return render(request, 'user/form.html', { 'form': form })
+    return render(request, 'user/form.html', { 'form': form, 'activate': 'user' })
 
 
 #
@@ -66,7 +61,7 @@ def update(request, **kwargs):
             return redirect('user-list')
     else:
         form = PasswordChangeForm(user=user)
-    return render(request, 'user/form.html', { 'form': form })
+    return render(request, 'user/form.html', { 'form': form, 'activate': 'user' })
 
 
 #
@@ -79,3 +74,11 @@ class UserDeleteView(PermissionRequiredMixin, DeleteView):
 
     # PermissionRequiredMixin settings
     permission_required = 'auth.delete_user'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+
+        # Set up 'activate' field for main menu item activation
+        context['activate'] = 'user'
+        return context
