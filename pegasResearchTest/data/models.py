@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+#
+# Client data model
+#
+class ClientData(models.Model):
+    timestamp = models.DateTimeField()
+    value = models.IntegerField()
