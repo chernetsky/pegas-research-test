@@ -21,7 +21,7 @@ intVal = randomIntGenerator()
 
 data = [{'timestamp': dt.timestamp(), 'value': next(intVal)} for dt in datetimeGenerator(datetime(2020, 1, 1), datetime(2020, 1, 1, 1))]
 
-print(data)
+# print(data)
 
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)

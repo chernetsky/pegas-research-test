@@ -5,10 +5,10 @@
         <form method="POST">
             {% csrf_token%}
             <fieldset class="form-group">
-                {% if request.path == '/create/' %}
+                {% if request.path == '/user/create/' %}
                     <legend class="border-bottom mb-4 ">Create new user</legend>
                 {% else %}
-                    <legend class="border-bottom mb-4 ">Update password for {{ user.username }}</legend>
+                    <legend class="border-bottom mb-4 ">Update password for '{{ user.username }}'</legend>
                 {% endif %}
                 {{ form|crispy }}
             </fieldset>

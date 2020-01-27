@@ -27,6 +27,10 @@ body {
   .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
   }
+
+  #greeting {
+    color: #cbd5db;
+  }
   
   .content-section {
     background: #ffffff;
@@ -70,15 +74,4 @@ body {
     width: 25px;
     height: 25px;
     vertical-align: middle;
-  }
-  
-  .account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-    margin-bottom: 16px;
-  }
-  
-  .account-heading {
-    font-size: 2.5rem;
   }

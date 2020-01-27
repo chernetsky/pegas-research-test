@@ -24,10 +24,6 @@ urlpatterns = [
 
     # users urls
     path('user/', include('user.urls')),
-
-    path('create/', user_views.create, name='user-create'),
-    path('profile/', user_views.profile, name='user-profile'),
-
     path('login/', auth_views.LoginView.as_view(template_name='user/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
     
