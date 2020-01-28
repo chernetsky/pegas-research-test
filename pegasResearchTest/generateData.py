@@ -19,7 +19,7 @@ def datetimeGenerator(start, end, delta=timedelta(minutes=5)):
 
 intVal = randomIntGenerator()
 
-data = [{'timestamp': dt.timestamp(), 'value': next(intVal)} for dt in datetimeGenerator(datetime(2020, 1, 1), datetime(2020, 1, 2))]
+data = [{'timestamp': dt.timestamp(), 'value': next(intVal)} for dt in datetimeGenerator(datetime(2020, 1, 1), datetime(2020, 1, 1, 12))]
 
 # print(data)
 

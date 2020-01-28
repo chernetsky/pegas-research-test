@@ -1,4 +1,26 @@
 {% extends 'data/base.html' %}
+{% load static %}
 {% block content %}
-    <h1>Статистика</h1>
+<h1>Статистика</h1>
+<div id="chart-container"></div>
+<div id="chart-toolbar">
+    <div id="chart-mode">
+        <h4>Шаг: <span>5</span> минут</h4>
+        <button type="button" class="btn btn-info">Переключить шаг</button>
+    </div>
+</div>
+<div class="mt-4 alert alert-info" role="alert">
+    <h5>Выбор диапазона</h5>
+    Вы можете менять диапазон отображаения данных, выделяя необходимый диапазон при помощи мыши на самом графике.<br>
+    Для сброса диапазона до максимального нажмите кнопку "Сброс диапазона".
+</div>
+
+<!-- Data vizualization scripts -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script src="{% static 'data/scripts.js' %}"></script>
 {% endblock %}
