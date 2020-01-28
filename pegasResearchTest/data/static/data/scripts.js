@@ -42,7 +42,6 @@ function preprocessData(data) {
         }
     }
 
-    console.log(data30)
     return data30;
 }
 
