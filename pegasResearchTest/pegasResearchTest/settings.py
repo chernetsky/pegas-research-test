@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+# import json
+
+# with open('config.json') as config_file:
+#     config = json.read(config_file)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +24,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'd%a(#5k8f$!l6%3xwb%3yk!fyq6(k7*7wwh5pyl(lgs7t!!mi9'
+SECRET_KEY = 'SECRET_KEY_DEVELOP'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    # '35.204.56.226'
     # 'localhost',
     # '127.0.0.1'
 ]
@@ -79,16 +84,47 @@ WSGI_APPLICATION = 'pegasResearchTest.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prt_db',
-        'USER': 'prt_user',
-        'PASSWORD': 'NgHA2SbtY5EEMB4c',
-        'HOST': 'localhost',
-        'PORT': '3306',
+if os.getenv('GAE_APPLICATION', None):
+    # Running on production App Engine, so connect to Google Cloud SQL using
+    # the unix socket at /cloudsql/<your-cloudsql-connection string>
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            # 'HOST': '/cloudsql/[YOUR-CONNECTION-NAME]',
+            'HOST': '34.70.116.150',
+            'USER': 'prt_user',
+            'PASSWORD': 'skYff1db',
+            'NAME': 'prt_db',
+        }
     }
-}
+else:
+    # Running locally so connect to either a local MySQL instance or connect to
+    # Cloud SQL via the proxy. To start the proxy via command line:
+    #
+    #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
+    #
+    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '127.0.0.1',
+            'PORT': '3306',
+            'NAME': 'prt_db',
+            'USER': 'prt_user',
+            'PASSWORD': 'skYff1db',
+        }
+    }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'prt_db',
+#         'USER': 'prt_user',
+#         'PASSWORD': 'NgHA2SbtY5EEMB4c',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
