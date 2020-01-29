@@ -41,13 +41,15 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'user.apps.UserConfig',
     'data.apps.DataConfig',
+    'rest.apps.RestConfig',
     'crispy_forms',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
@@ -104,28 +106,27 @@ else:
     #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
     #
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.mysql',
+    #         'HOST': '127.0.0.1',
+    #         'PORT': '3306',
+    #         'NAME': 'prt_db',
+    #         'USER': 'prt_user',
+    #         'PASSWORD': 'skYff1db',
+    #     }
+    # }
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
             'NAME': 'prt_db',
             'USER': 'prt_user',
-            'PASSWORD': 'skYff1db',
+            'PASSWORD': 'NgHA2SbtY5EEMB4c',
+            'HOST': 'localhost',
+            'PORT': '3306',
         }
     }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'prt_db',
-#         'USER': 'prt_user',
-#         'PASSWORD': 'NgHA2SbtY5EEMB4c',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

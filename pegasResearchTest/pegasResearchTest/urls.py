@@ -21,6 +21,9 @@ from user import views as user_views
 urlpatterns = [
     # data urls
     path('', include('data.urls')),
+    
+    # rest api urls
+    path('api/', include('rest.urls')),
 
     # users urls
     path('user/', include('user.urls')),

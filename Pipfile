@@ -5,11 +5,13 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
+pylint-django = "*"
 
 [packages]
 django = "*"
 mysqlclient = "*"
 django-crispy-forms = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.8"

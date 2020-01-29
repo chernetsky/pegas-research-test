@@ -150,12 +150,12 @@ function switchMode() {
 
 $('#chart-mode .btn').mousedown(switchMode);
 
-const data = fetch('/data/').then(response => {
+const data = fetch('/api/data/').then(response => {
     if (response.ok)
         return response.json();
 }).then(data => {
-    chartData5 = data;
-    chartData30 = preprocessData(data);
+    chartData5 = data['data'];
+    chartData30 = preprocessData(chartData5);
     
     drawChart(chartData5, DISPLAY_MODE);
 });
