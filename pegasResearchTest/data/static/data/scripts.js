@@ -15,17 +15,17 @@ let chartData30;
  * @returns {Object} Converted data
  */
 function preprocessData(data) {
-    const data30 = {'min': [], 'avg': [], 'max': []};
+    const data30 = { 'min': [], 'avg': [], 'max': [] };
     let counter = 0;
     let min = +Infinity;
     let max = -Infinity;
     let sum = 0;
 
-    for(let i in data) {
+    for (let i in data) {
         const row = data[i];
         const ts = row[0];
         const val = row[1];
-    
+
         min = Math.min(min, val);
         max = Math.max(max, val);
         sum += val;
@@ -128,7 +128,7 @@ function drawChart(data, mode) {
                 'Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг',
                 'Пятница', 'Суббота'
             ],
-            resetZoom : 'Сброс диапазона'
+            resetZoom: 'Сброс диапазона'
         }
     });
 
@@ -142,10 +142,10 @@ function switchMode() {
     DISPLAY_MODE = DISPLAY_MODE == CHART_MODES.MODE_5 ? CHART_MODES.MODE_30 : CHART_MODES.MODE_5;
     $('#chart-mode h4 span').text(DISPLAY_MODE);
 
-    if (DISPLAY_MODE == CHART_MODES.MODE_5)
-        drawChart(chartData5, DISPLAY_MODE);
-    else
-        drawChart(chartData30, DISPLAY_MODE);
+    drawChart(
+        DISPLAY_MODE == CHART_MODES.MODE_5 ? chartData5 : chartData30,
+        DISPLAY_MODE
+    );
 }
 
 $('#chart-mode .btn').mousedown(switchMode);
@@ -156,6 +156,6 @@ const data = fetch('/api/data/').then(response => {
 }).then(data => {
     chartData5 = data['data'];
     chartData30 = preprocessData(chartData5);
-    
+
     drawChart(chartData5, DISPLAY_MODE);
 });
