@@ -1,2 +1,8 @@
 # pegas-research-test
-Test work using Django framework
+
+## Users
+
+Логин | Пароль
+--- | ---
+**user** | demo1234
+**admin** | demo5678
