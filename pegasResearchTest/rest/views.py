@@ -18,8 +18,10 @@ class DataView(APIView):
 
 
     def post(self, request):
-        dataRow = request.data.get('data')
-        serializer = ClientDataSerializer(data=dataRow)
-        if (serializer.is_valid(raise_exception=True)):
-            serializer.save()
+        # clientId = request.data.get('clientId')
+        dataRows = request.data.get('data')
+        for row in dataRows:    
+            serializer = ClientDataSerializer(data=row)
+            if (serializer.is_valid(raise_exception=True)):
+                serializer.save()
         return Response({"success": "Data row saved"})
